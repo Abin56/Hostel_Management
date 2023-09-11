@@ -43,6 +43,7 @@ dependencies:
   firebase_database: 
   firebase_storage: 
   cloud_firestore: 
+  popover: 
 
 dev_dependencies:
   flutter_test:

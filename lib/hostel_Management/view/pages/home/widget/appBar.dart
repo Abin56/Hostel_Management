@@ -7,6 +7,7 @@ import 'package:host_management/hostel_Management/view/pages/home/notice_Board/n
 import 'package:host_management/hostel_Management/view/pages/home/school_deatils_BAr/schools_details_bar.dart';
 import 'package:host_management/hostel_Management/view/pages/home/today_calender/today_calender.dart';
 import 'package:host_management/hostel_Management/view/pages/home/widget/hover_clicktext_widget.dart';
+import 'package:popover/popover.dart';
 
 class ResAppBarWidget extends StatelessWidget {
   String response;
@@ -119,12 +120,29 @@ class ResAppBarWidget extends StatelessWidget {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                            GooglePoppinsWidgets(
-                                              text: dasboardText[index],
-                                              fontWeight: FontWeight.bold,
-                                              fontsize: 14,
-                                              color: const Color.fromARGB(
-                                                  255, 0, 38, 161),
+                                            GestureDetector(
+                                              onTap: () {
+                                                // showPopover(
+                                                //   context: context,
+                                                //   bodyBuilder: (context) =>
+                                                //       const ListItems(),
+                                                //   onPop: () => print(
+                                                //       'Popover was popped!'),
+                                                //   direction:
+                                                //       PopoverDirection.right,
+                                                //   width: 200,
+                                                //   height: 400,
+                                                //   arrowHeight: 15,
+                                                //   arrowWidth: 30,
+                                                // );
+                                              },
+                                              child: GooglePoppinsWidgets(
+                                                text: dasboardText[index],
+                                                fontWeight: FontWeight.bold,
+                                                fontsize: 14,
+                                                color: const Color.fromARGB(
+                                                    255, 0, 38, 161),
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -216,8 +234,6 @@ class ResAppBarWidget extends StatelessWidget {
     );
   }
 }
-
-
 
 List<String> dashboardText = [
   'Total Students',
@@ -371,3 +387,118 @@ List<IconData> dashBoardIcons = [
   Icons.settings,
   Icons.gavel,
 ];
+
+class PopoverExample extends StatelessWidget {
+  const PopoverExample({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Popover Example')),
+        body: const SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(16),
+            child: Button(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Button extends StatelessWidget {
+  const Button({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 80,
+      height: 40,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+        boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 5)],
+      ),
+      child: GestureDetector(
+        child: const Center(child: Text('Click Me')),
+        onTap: () {
+          showPopover(
+            context: context,
+            bodyBuilder: (context) => const ListItems(),
+            onPop: () => print('Popover was popped!'),
+            direction: PopoverDirection.bottom,
+            width: 200,
+            height: 400,
+            arrowHeight: 15,
+            arrowWidth: 30,
+          );
+        },
+      ),
+    );
+  }
+}
+
+class ListItems extends StatelessWidget {
+  const ListItems({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: ListView(
+        padding: const EdgeInsets.all(8),
+        children: [
+          InkWell(
+            onTap: () {
+              Navigator.of(context)
+                ..pop()
+                ..push(
+                  MaterialPageRoute<SecondRoute>(
+                    builder: (context) => const SecondRoute(),
+                  ),
+                );
+            },
+            child: Container(
+              height: 50,
+              color: Colors.amber[100],
+              child: const Center(child: Text('Entry A')),
+            ),
+          ),
+          const Divider(),
+          Container(
+            height: 50,
+            color: Colors.amber[200],
+            child: const Center(child: Text('Entry B')),
+          ),
+          const Divider(),
+          Container(
+            height: 50,
+            color: Colors.amber[300],
+            child: const Center(child: Text('Entry C')),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  const SecondRoute({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Route'),
+        automaticallyImplyLeading: false,
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}

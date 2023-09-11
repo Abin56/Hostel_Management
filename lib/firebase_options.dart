@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -45,6 +42,17 @@ class DefaultFirebaseOptions {
         );
     }
   }
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBPaQ4Ga-d_wTd9pCiU_kMTllMeuVblSP0',
+    appId: '1:512252187081:web:29a9843fc66f17bc6f5818',
+    messagingSenderId: '512252187081',
+    projectId: 'leptondujokerala',
+    authDomain: 'leptondujokerala.firebaseapp.com',
+    databaseURL: 'https://leptondujokerala-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'leptondujokerala.appspot.com',
+    measurementId: 'G-QC6SR6TLE0',
+  );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAPYQ232se8EQjwRWXEyrpD6S280gIWh1w',
