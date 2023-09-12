@@ -74,6 +74,9 @@ class HostelFeeRepository {
 
   Future<void> updateHostelFee({required HostelFeeModel data}) async {
     try {
+      
+      data.createdAt =
+          Timestamp.now().millisecondsSinceEpoch; //updated time add to database
       await _fireStore
           .doc("fees")
           .collection("fees")
@@ -111,9 +114,20 @@ class HostelFeeRepository {
         .collection('fees')
         .snapshots()
         .map((QuerySnapshot snapshot) {
-      return snapshot.docs
+      //converting to dart model
+      final data = snapshot.docs
           .map((e) => HostelFeeModel.fromMap(e.data() as Map<String, dynamic>))
           .toList();
+
+      //sort it with created time
+      data.sort(
+        (a, b) {
+          final aTimestamp = a.createdAt ?? 0;
+          final bTimestamp = b.createdAt ?? 0;
+          return bTimestamp.compareTo(aTimestamp);
+        },
+      );
+      return data;
     });
   }
 
