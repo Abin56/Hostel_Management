@@ -40,7 +40,6 @@ dependencies:
   flutter_screenutil:
   intl:
   fluttertoast:
-  popover:
   provider:
   uuid:
   google_fonts:
@@ -52,6 +51,7 @@ dependencies:
   cloud_firestore:
   flutter_staggered_animations:
   popover:
+  dropdown_search: 
 
 dev_dependencies:
   flutter_test:

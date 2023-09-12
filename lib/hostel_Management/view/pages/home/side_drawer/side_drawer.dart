@@ -53,6 +53,9 @@ class SideDrawerWidget extends StatelessWidget {
                                           context, index); // Romms Management
                                       rulesClickedFunction(
                                           context, index); // Rules Management
+
+                                      hostelFeesPage(
+                                          context, index); // Hostel Fees
                                     },
                                     child: GooglePoppinsWidgets(
                                       text: dasboardText[index],

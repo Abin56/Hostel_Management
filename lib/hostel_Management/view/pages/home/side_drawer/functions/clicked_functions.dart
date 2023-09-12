@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:host_management/hostel_Management/view/colors/colors.dart';
 import 'package:host_management/hostel_Management/view/fonts/google_poppins.dart';
+import 'package:host_management/hostel_Management/view/pages/hostel_fee/hostel_fee_create/presentation/hoste_fee_create_page.dart';
 import 'package:host_management/hostel_Management/view/widgets/responsive/responsive.dart';
 
 /// Romms
@@ -242,5 +243,15 @@ rulesClickedFunction(BuildContext context, int index) async {
         );
       },
     );
+  }
+}
+
+hostelFeesPage(BuildContext context, int index) {
+  if (index == 8) {
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) {
+        return HostelFeeCreatePage();
+      },
+    ));
   }
 }

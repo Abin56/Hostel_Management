@@ -14,19 +14,16 @@ class ResponsiveWebSite extends StatelessWidget {
       super.key});
 
   static bool isMobile(BuildContext context) {
-    Responsive.device = 'mobile';
 
     return MediaQuery.of(context).size.width < 650;
   }
 
   static bool isTablet(BuildContext context) {
-    Responsive.device = 'tablet';
     return MediaQuery.of(context).size.width < 1100 &&
         MediaQuery.of(context).size.width >= 650;
   }
 
   static bool isDesktop(BuildContext context) {
-    Responsive.device = 'destop';
     return MediaQuery.of(context).size.width >= 1100;
   }
 
