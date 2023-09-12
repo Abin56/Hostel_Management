@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:host_management/hostel_Management/view/colors/colors.dart';
 import 'package:host_management/hostel_Management/view/fonts/google_poppins.dart';
+import 'package:host_management/hostel_Management/view/widgets/responsive/responsive.dart';
 
 /// Romms
 roomsClickedFunction(BuildContext context, int index) {
@@ -17,8 +18,8 @@ roomsClickedFunction(BuildContext context, int index) {
                 Column(
                   children: [
                     Container(
-                      height: 35,
-                      width: 150,
+                      height: 30,
+                      width: 180,
                       decoration: BoxDecoration(
                         border: Border.all(color: cBlack),
                       ),
@@ -38,7 +39,7 @@ roomsClickedFunction(BuildContext context, int index) {
                         children: [
                           Container(
                             height: 300,
-                            width: 180,
+                            width: 100,
                             decoration: BoxDecoration(
                               border: Border.all(color: cBlack),
                             ),
@@ -54,7 +55,10 @@ roomsClickedFunction(BuildContext context, int index) {
                                             const EdgeInsets.only(left: 10),
                                         child: Row(
                                           children: [
-                                            const Icon(Icons.domain),
+                                            const Icon(
+                                              Icons.domain,
+                                              size: 12,
+                                            ),
                                             const SizedBox(
                                               width: 10,
                                             ),
@@ -63,7 +67,7 @@ roomsClickedFunction(BuildContext context, int index) {
                                               child: GooglePoppinsWidgets(
                                                 text: 'Floor ${index + 1}',
                                                 fontWeight: FontWeight.bold,
-                                                fontsize: 12,
+                                                fontsize: 11,
                                                 color: const Color.fromARGB(
                                                     255, 31, 31, 31),
                                               ),
@@ -81,29 +85,39 @@ roomsClickedFunction(BuildContext context, int index) {
                                 },
                                 itemCount: 10),
                           ),
-                          Container(
-                            height: 300,
-                            width: 300,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: cBlack),
-                            ),
-                            child: GridView.builder(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: 10,
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3),
-                              itemBuilder: (context, index) {
-                                return Card(
-                                  margin: const EdgeInsets.only(
-                                      bottom: 10, right: 10),
-                                  elevation: 5.0,
-                                  child: Center(
-                                      child: GooglePoppinsWidgets(
-                                          text: 'Rooms', fontsize: 11)),
-                                );
-                              },
+                          Expanded(
+                            child: Container(
+                              height: 300,
+                              // width: 300,
+                              decoration: BoxDecoration(
+                                color: themeColorBlue.withOpacity(0.1),
+                                border: Border.all(color: cBlack),
+                              ),
+                              child: GridView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: 10,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount:
+                                            ResponsiveWebSite.isMobile(context)
+                                                ? 2
+                                                : 3),
+                                itemBuilder: (context, index) {
+                                  return Card(
+                                    // color: themeColorGreen,
+                                    margin: const EdgeInsets.only(
+                                        bottom: 10, right: 06),
+                                    elevation: 5.0,
+                                    child: Center(
+                                        child: GooglePoppinsWidgets(
+                                      text: 'Rooms',
+                                      fontsize: 11,
+                                      fontWeight: FontWeight.w600,
+                                    )),
+                                  );
+                                },
+                              ),
                             ),
                           )
                         ],
