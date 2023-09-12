@@ -43,6 +43,7 @@ dependencies:
   firebase_database: 
   firebase_storage: 
   cloud_firestore: 
+  flutter_staggered_animations: 
   popover: 
 
 dev_dependencies:

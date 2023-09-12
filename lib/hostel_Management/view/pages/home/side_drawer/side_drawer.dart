@@ -10,9 +10,6 @@ class SideDrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var clickedFucntions = [
-      roomsClickedFunction(context),
-    ];
     return Container(
       height: 800,
       width: 300,
@@ -51,7 +48,12 @@ class SideDrawerWidget extends StatelessWidget {
                                     width: 10,
                                   ),
                                   GestureDetector(
-                                    onTap: () {},
+                                    onTap: () async {
+                                      roomsClickedFunction(
+                                          context, index); // Romms Management
+                                      rulesClickedFunction(
+                                          context, index); // Rules Management
+                                    },
                                     child: GooglePoppinsWidgets(
                                       text: dasboardText[index],
                                       fontWeight: FontWeight.bold,
