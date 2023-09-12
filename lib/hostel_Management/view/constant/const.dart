@@ -1,3 +1,5 @@
-class Responsive {
-  static String device = '';
-}
+import 'package:flutter/material.dart';
+
+const circularPIndicator = Center(
+  child: CircularProgressIndicator(),
+);
