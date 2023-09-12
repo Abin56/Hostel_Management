@@ -9,6 +9,8 @@ import 'package:host_management/hostel_Management/view/pages/home/today_calender
 import 'package:host_management/hostel_Management/view/pages/home/widget/hover_clicktext_widget.dart';
 import 'package:popover/popover.dart';
 
+import '../../hostel_fee/hostel_fee_create/presentation/hoste_fee_create_page.dart';
+
 class ResAppBarWidget extends StatelessWidget {
   String response;
   DateTime todayController = DateTime.now();
@@ -19,7 +21,6 @@ class ResAppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return SizedBox(
       height: 800,
       width: double.infinity,
@@ -136,12 +137,20 @@ class ResAppBarWidget extends StatelessWidget {
                                                 //   arrowWidth: 30,
                                                 // );
                                               },
-                                              child: GooglePoppinsWidgets(
-                                                text: dasboardText[index],
-                                                fontWeight: FontWeight.bold,
-                                                fontsize: 14,
-                                                color: const Color.fromARGB(
-                                                    255, 0, 38, 161),
+                                              child: GestureDetector(
+                                                onTap: () =>
+                                                    Navigator.of(context)
+                                                        .push(MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      HostelFeeCreatePage(),
+                                                )),
+                                                child: GooglePoppinsWidgets(
+                                                  text: dasboardText[index],
+                                                  fontWeight: FontWeight.bold,
+                                                  fontsize: 14,
+                                                  color: const Color.fromARGB(
+                                                      255, 0, 38, 161),
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -372,6 +381,21 @@ List<String> dasboardText = [
   'Notice Board',
   'Settings',
   'Rules',
+];
+
+List<Widget> dasboardNavigation = [
+  HostelFeeCreatePage(),
+  HostelFeeCreatePage(),
+  HostelFeeCreatePage(),
+  HostelFeeCreatePage(),
+  HostelFeeCreatePage(),
+  HostelFeeCreatePage(),
+  HostelFeeCreatePage(),
+  HostelFeeCreatePage(),
+  HostelFeeCreatePage(),
+  HostelFeeCreatePage(),
+  HostelFeeCreatePage(),
+  HostelFeeCreatePage(),
 ];
 List<IconData> dashBoardIcons = [
   Icons.format_list_numbered_sharp,
