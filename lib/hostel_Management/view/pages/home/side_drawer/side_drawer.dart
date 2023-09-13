@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:host_management/hostel_Management/view/colors/colors.dart';
 import 'package:host_management/hostel_Management/view/fonts/google_poppins.dart';
-import 'package:host_management/hostel_Management/view/pages/home/side_drawer/functions/clicked_functions.dart';
+import 'package:host_management/hostel_Management/view/pages/home/side_drawer/functions/fees_management/fees_clicked.dart';
+
+import 'package:host_management/hostel_Management/view/pages/home/side_drawer/functions/room_management/romms_click.dart';
+import 'package:host_management/hostel_Management/view/pages/home/side_drawer/functions/rules_management/rules_clicked.dart';
 
 class SideDrawerWidget extends StatelessWidget {
   const SideDrawerWidget({
