@@ -44,46 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBPaQ4Ga-d_wTd9pCiU_kMTllMeuVblSP0',
-    appId: '1:512252187081:web:29a9843fc66f17bc6f5818',
-    messagingSenderId: '512252187081',
-    projectId: 'leptondujokerala',
-    authDomain: 'leptondujokerala.firebaseapp.com',
-    databaseURL: 'https://leptondujokerala-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'leptondujokerala.appspot.com',
-    measurementId: 'G-QC6SR6TLE0',
+    apiKey: 'AIzaSyBSDoWl-LPy6Xq41OvdXDAtBoUa83TdQj0',
+    appId: '1:1047074667222:web:6bc3673d512c943d0ae777',
+    messagingSenderId: '1047074667222',
+    projectId: 'hostel-management-38192',
+    authDomain: 'hostel-management-38192.firebaseapp.com',
+    storageBucket: 'hostel-management-38192.appspot.com',
+    measurementId: 'G-QH4DE62QD8',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAPYQ232se8EQjwRWXEyrpD6S280gIWh1w',
-    appId: '1:512252187081:android:ee68c26eff92df286f5818',
-    messagingSenderId: '512252187081',
-    projectId: 'leptondujokerala',
-    databaseURL: 'https://leptondujokerala-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'leptondujokerala.appspot.com',
+    apiKey: 'AIzaSyD5YLbrMIfU53vpAeCELr-Ga_AHCC1Yopc',
+    appId: '1:1047074667222:android:00ce52805533270a0ae777',
+    messagingSenderId: '1047074667222',
+    projectId: 'hostel-management-38192',
+    storageBucket: 'hostel-management-38192.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC6NLxGfZp2jQxtGXWH-rlNb0zmguZYK-8',
-    appId: '1:512252187081:ios:5a1135ae6d71f8946f5818',
-    messagingSenderId: '512252187081',
-    projectId: 'leptondujokerala',
-    databaseURL: 'https://leptondujokerala-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'leptondujokerala.appspot.com',
-    androidClientId: '512252187081-oukpm7hd2rj5ibudeeaduk8eed0j8tge.apps.googleusercontent.com',
-    iosClientId: '512252187081-386ln3u3gd4vtsir84bbvpvcfnhaur29.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCehDyBLyLx7LLeenGxZCpAVFUlzhiPLRU',
+    appId: '1:1047074667222:ios:19b4f46f26a393fa0ae777',
+    messagingSenderId: '1047074667222',
+    projectId: 'hostel-management-38192',
+    storageBucket: 'hostel-management-38192.appspot.com',
     iosBundleId: 'com.example.hostManagement',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyC6NLxGfZp2jQxtGXWH-rlNb0zmguZYK-8',
-    appId: '1:512252187081:ios:5a1135ae6d71f8946f5818',
-    messagingSenderId: '512252187081',
-    projectId: 'leptondujokerala',
-    databaseURL: 'https://leptondujokerala-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'leptondujokerala.appspot.com',
-    androidClientId: '512252187081-oukpm7hd2rj5ibudeeaduk8eed0j8tge.apps.googleusercontent.com',
-    iosClientId: '512252187081-386ln3u3gd4vtsir84bbvpvcfnhaur29.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCehDyBLyLx7LLeenGxZCpAVFUlzhiPLRU',
+    appId: '1:1047074667222:ios:19b4f46f26a393fa0ae777',
+    messagingSenderId: '1047074667222',
+    projectId: 'hostel-management-38192',
+    storageBucket: 'hostel-management-38192.appspot.com',
     iosBundleId: 'com.example.hostManagement',
   );
 }

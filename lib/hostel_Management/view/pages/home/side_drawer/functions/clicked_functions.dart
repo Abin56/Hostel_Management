@@ -1,9 +1,15 @@
+import 'dart:js';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:host_management/hostel_Management/view/colors/colors.dart';
 import 'package:host_management/hostel_Management/view/fonts/google_poppins.dart';
-import 'package:host_management/hostel_Management/view/widgets/responsive/responsive.dart';
+
+import '../../../../widgets/responsive/responsive.dart';
+
 
 /// Romms
+
 roomsClickedFunction(BuildContext context, int index) {
   if (index == 0) {
     return showDialog(
@@ -147,6 +153,7 @@ rulesClickedFunction(BuildContext context, int index) async {
     return showDialog(
       context: context,
       barrierDismissible: false, // user must tap button!
+
       builder: (BuildContext context) {
         return AlertDialog(
           title: GooglePoppinsWidgets(
@@ -166,6 +173,7 @@ rulesClickedFunction(BuildContext context, int index) async {
                           BoxDecoration(border: Border.all(color: cBlack)),
                       child: Center(
                           child: TextFormField(
+                        controller: descriptionController,
                         decoration: const InputDecoration(
                             hintText: '   Enter your rules here....'),
                       )),
@@ -175,17 +183,77 @@ rulesClickedFunction(BuildContext context, int index) async {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            height: 30,
-                            width: 150,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: cBlack),
+                          // Text(rules[index].description),
+                          InkWell(
+                            onTap: () async {
+                              final String description =
+                                  descriptionController.text;
+
+                              if (description != null) {
+                                 await FirebaseFirestore.instance.collection('rule').add({
+                                  "description": description,
+                                });
+
+                                descriptionController.text = '';
+                                // Navigator.of(context).pop();
+                              }
+                            },
+                            child: Container(
+                              height: 30,
+                              width: 130,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: cBlack),
+                              ),
+                              child: Center(
+                                child: GooglePoppinsWidgets(
+                                  text: '➕ Add Rules',
+                                  fontsize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
                             ),
-                            child: Center(
-                              child: GooglePoppinsWidgets(
-                                text: '+ Add Rules',
-                                fontsize: 11,
-                                fontWeight: FontWeight.w500,
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          InkWell(
+                            onTap: () async {
+                   
+                            },
+                            child: Container(
+                              height: 30,
+                              width: 120,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: cBlack),
+                              ),
+                              child: Center(
+                                child: GooglePoppinsWidgets(
+                                  text: '🖋️ Edit Rules',
+                                  fontsize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          InkWell(
+                            onTap: () async{
+          
+                            },
+                            child: Container(
+                              height: 30,
+                              width: 130,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: cBlack),
+                              ),
+                              child: Center(
+                                child: GooglePoppinsWidgets(
+                                  text: '🗑️ Delete Rules',
+                                  fontsize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
@@ -213,7 +281,8 @@ rulesClickedFunction(BuildContext context, int index) async {
                                       width: 05,
                                     ),
                                     GooglePoppinsWidgets(
-                                        text: 'Rules${index + 1}', fontsize: 12)
+                                        text: ' ${descriptionController.text}',
+                                        fontsize: 12)
                                   ],
                                 ),
                               );
@@ -244,3 +313,24 @@ rulesClickedFunction(BuildContext context, int index) async {
     );
   }
 }
+
+TextEditingController descriptionController = TextEditingController();
+final CollectionReference description =
+    FirebaseFirestore.instance.collection('rule');
+int selectedIndex = -1;
+
+// Future<void> update([DocumentSnapshot? documentSnapshot]) async {
+//     if (documentSnapshot != null) {
+
+//       descriptionController.text = documentSnapshot['name'];
+
+//     }
+
+Future<void> delete(String ruleId) async {
+  await description.doc(ruleId).delete();
+
+  ScaffoldMessenger.of(context as BuildContext).showSnackBar(
+      const SnackBar(content: Text('You have successfully deleted a ')));
+}
+
+// }
